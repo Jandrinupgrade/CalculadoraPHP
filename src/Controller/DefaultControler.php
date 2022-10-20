@@ -6,9 +6,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultControler
 {
-    #[Route("/saludo")]
-public function saludo()
+    #[Route("/{operation}/{operatorA}/{operatorB}")]
+public function calculator($operation, $operatorA, $operatorB)
 {
-return new Response("Hola mundo");
+    if($operation ==='add'){
+        $result = $operatorA + $operatorB;
+        return new Response("El resultado de sumar $operatorA + $operatorB es $result");
+    }
+return new Response("Datos erroneos, asegurese de introducir operación válida.");
 }
 }
